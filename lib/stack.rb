@@ -1,11 +1,19 @@
+# LIFO
 class Stack
-  attr_reader :head
+  attr_reader :last
 
   def push(item)
-    @head = item
+    current = Element.new(item, @last)
+    @last = current
   end
 
   def pop
-    @head
+    @last.content
+  end
+
+  private
+
+  def first_element?
+    @last.prev.nil?
   end
 end
