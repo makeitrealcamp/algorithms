@@ -31,4 +31,14 @@ class StackTest < MiniTest::Test
     assert_equal 4, @stack.last.prev.prev.content
   end
 
+  def test_push_and_top_with_multiple_items
+    @stack.push(4)
+    @stack.push(8)
+    @stack.push(12)
+
+    assert_equal 12, @stack.pop
+    assert_equal 8, @stack.pop
+    assert_equal 4, @stack.pop
+  end
+
 end

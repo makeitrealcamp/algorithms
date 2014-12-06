@@ -8,7 +8,10 @@ class Stack
   end
 
   def pop
-    @last.content
+    element = @last
+    @last = @last.prev
+
+    element.content
   end
 
   private
