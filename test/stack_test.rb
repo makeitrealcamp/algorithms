@@ -41,4 +41,10 @@ class StackTest < MiniTest::Test
     assert_equal 4, @stack.pop
   end
 
+  def test_empty_stack
+    assert_raises(EmptyStackError) do
+      @stack.pop
+    end
+  end
+
 end

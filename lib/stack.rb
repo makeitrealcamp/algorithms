@@ -1,4 +1,7 @@
 # LIFO
+
+class EmptyStackError < Exception; end
+
 class Stack
   attr_reader :last
 
@@ -8,15 +11,15 @@ class Stack
   end
 
   def pop
-    element = @last
-    @last = @last.prev
+    validate_empty_stack!
 
+    element, @last = @last, @last.prev
     element.content
   end
 
   private
 
-  def first_element?
-    @last.prev.nil?
+  def validate_empty_stack!
+    raise EmptyStackError unless @last
   end
 end
