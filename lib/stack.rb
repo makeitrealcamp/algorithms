@@ -1,9 +1,6 @@
 # LIFO
-
-class EmptyStackError < Exception; end
-
 class Stack
-  attr_reader :last
+  class EmptyStackError < Exception; end
 
   def push(item)
     current = Element.new(item, @last)
@@ -21,5 +18,13 @@ class Stack
 
   def validate_empty_stack!
     raise EmptyStackError unless @last
+  end
+end
+
+class Element
+  attr_accessor :content, :prev
+
+  def initialize(content, prev)
+    @content, @prev = content, prev
   end
 end

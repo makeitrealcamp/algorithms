@@ -21,16 +21,6 @@ class StackTest < MiniTest::Test
     assert_equal 2, result
   end
 
-  def test_push_with_multiple_items
-    @stack.push(4)
-    @stack.push(8)
-    @stack.push(12)
-
-    assert_equal 12, @stack.last.content
-    assert_equal 8, @stack.last.prev.content
-    assert_equal 4, @stack.last.prev.prev.content
-  end
-
   def test_push_and_top_with_multiple_items
     @stack.push(4)
     @stack.push(8)
@@ -42,7 +32,7 @@ class StackTest < MiniTest::Test
   end
 
   def test_empty_stack
-    assert_raises(EmptyStackError) do
+    assert_raises(Stack::EmptyStackError) do
       @stack.pop
     end
   end
